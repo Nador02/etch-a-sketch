@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Etch-A-Sketch</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+        </div>
+    <script>
+    let amount = prompt("How many boxes would you like?");
+    const cont = document.querySelector(".container");
+    for(let x = 0; x < (amount * amount); x++)
+    {
+        console.log('epic');
+        const temp = document.createElement("div");
+        cont.appendChild(temp);
+        temp.classList.add(x);
+        temp.classList.add("box");
+        temp.style.flexBasis=(100/amount) + "%";
+    }
+
+    </script>
+    </body>
+</html>
