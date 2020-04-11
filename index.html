@@ -5,13 +5,17 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <div class="title">Etch-A-Sketch</div>
+        <div class="title">Etch A Sketch</div>
         <div class="container">
         </div>
         <button class="shake">Shake!</button>
+        <button class="rainbow">Random Colors</button>
+        <button class="eraser">Eraser</button>
         <div class ="back"></div>
     <script>
     let amount = prompt("How many boxes would you like?");
+    let color=false;
+    let eraser=false;
     function create(amount){
         const cont = document.querySelector(".container");
         for(let x = 0; x < (amount * amount); x++)
@@ -26,8 +30,42 @@
         boxes.forEach(box => box.addEventListener("mouseover", sketch));
     }
     function sketch(){
-        this.style.backgroundColor="black";
+        if(eraser == true)
+        {
+            this.style.backgroundColor="white";
+        }
+        else if(color == false)
+            this.style.backgroundColor="black";
+        else if(color == true)
+            this.style.backgroundColor="rgb(" + (Math.random()*255) + "," + (Math.random()*255) + "," + (Math.random()*255) + ")";
     }
+    function rainbow(){
+        if(color == false)
+        {
+            color = true;
+            this.innerText = "Black";
+        }
+        else
+        {
+            color = false;
+            this.innerText = "Rainbow Colors";
+        }
+        
+    }
+    function erase(){
+        if(eraser == false)
+        {
+            eraser = true;
+            this.innerText = "Draw";
+        }
+        else
+        {
+            eraser = false;
+            this.innerText = "Eraser";
+        }
+        
+    }
+    
     function shake(){
         for(let y = 0; y <(amount * amount); y++)
         {
@@ -41,7 +79,11 @@
     }
     create(amount);
     let btn = document.querySelector(".shake");
+    let btn2 = document.querySelector(".rainbow");
+    let btn3 = document.querySelector(".eraser");
     btn.addEventListener("click",shake);
+    btn2.addEventListener("click", rainbow);
+    btn3.addEventListener("click",erase);
     </script>
     </body>
 </html>
