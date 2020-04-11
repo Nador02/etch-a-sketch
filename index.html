@@ -5,21 +5,40 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <button class="shake">Shake!</button>
         <div class="container">
         </div>
     <script>
     let amount = prompt("How many boxes would you like?");
-    const cont = document.querySelector(".container");
-    for(let x = 0; x < (amount * amount); x++)
-    {
-        console.log('epic');
-        const temp = document.createElement("div");
-        cont.appendChild(temp);
-        temp.classList.add(x);
-        temp.classList.add("box");
-        temp.style.flexBasis=(100/amount) + "%";
+    function create(amount){
+        const cont = document.querySelector(".container");
+        for(let x = 0; x < (amount * amount); x++)
+        {
+            const temp = document.createElement("div");
+            cont.appendChild(temp);
+            temp.classList.add(x);
+            temp.classList.add("box");
+            temp.style.flexBasis=(100/amount) + "%";
+        }
+        let boxes = document.querySelectorAll(".box");
+        boxes.forEach(box => box.addEventListener("mouseover", sketch));
     }
-
+    function sketch(){
+        this.style.backgroundColor="black";
+    }
+    function shake(){
+        for(let y = 0; y <(amount * amount); y++)
+        {
+            let container = document.querySelector(".container");
+            let temp = container.querySelector(".box");
+            container.removeChild(temp);
+        }
+        let amountN = prompt("How many boxes would you like?");
+        create(amountN);
+    }
+    create(amount);
+    let btn = document.querySelector(".shake");
+    btn.addEventListener("click",shake);
     </script>
     </body>
 </html>
