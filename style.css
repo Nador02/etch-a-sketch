@@ -1,3 +1,9 @@
+.back{
+    background-color:cyan;
+}
+.title{
+    font-size:16px;
+}
 .container{
     display:flex;
     flex-wrap:wrap;
@@ -5,8 +11,18 @@
     height:80vh;
     width:60vw;
     justify-content:space-between;
+    border-width:10px;
+    border-color:red;
+    border-style:solid;
+    border-radius:2px;
 }
 .box{
     flex:1 0;
-    background-color:yellow;
+    background-color:white;
+}
+.shake{
+    position:absolute;
+    left:45%;
+    width:10vw;
+    height:6vh;
 }
